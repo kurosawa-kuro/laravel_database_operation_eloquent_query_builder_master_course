@@ -41,6 +41,8 @@ use Laravel\Sanctum\HasApiTokens;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @mixin \Eloquent
  * @property-read \App\Models\Profile|null $profile
+ * @property string $role
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereRole($value)
  */
 class User extends Authenticatable
 {
@@ -80,7 +82,7 @@ class User extends Authenticatable
 
     Public function profile(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
-        return $this->hasOne(Profile::class);
+        return $this->hasOne(UserProfile::class);
     }
 
     /**

@@ -21,3 +21,7 @@ php artisan migrate:fresh --seed
 php artisan ide-helper:generate
 php artisan ide-helper:models
 ```
+
+```
+php artisan make:model UserProfile -m
+```
