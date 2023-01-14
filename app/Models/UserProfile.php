@@ -31,4 +31,9 @@ class UserProfile extends Model
         'user_id',
         'age',
     ];
+
+    Public function user(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->belongsTo(User::class);
+    }
 }

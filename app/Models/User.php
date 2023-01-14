@@ -59,6 +59,7 @@ class User extends Authenticatable
         'password',
         'role',
         'avatar',
+        'company_id'
     ];
 
     /**
@@ -83,6 +84,11 @@ class User extends Authenticatable
     Public function profile(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(UserProfile::class);
+    }
+
+    Public function company(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Company::class);
     }
 
     /**

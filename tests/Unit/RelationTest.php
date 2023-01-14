@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use App\Models\Company;
 use App\Models\User;
 use App\Models\UserProfile;
 use Exception;
@@ -11,6 +12,8 @@ use Tests\TestCase;
 
 class RelationTest extends TestCase
 {
+//    use RefreshDatabase;
+
     /**
      * A basic test example.
      *
@@ -39,5 +42,23 @@ class RelationTest extends TestCase
         dd($otherUser ->toArray());
         $this->assertTrue(true
         );
+    }
+
+    public function test_one_to_many()
+    {
+        User::factory(2)->create();
+        $users = User::all();
+//        dd($users);
+        Company::create(['name'=>'abc']);
+        Company::create(['name'=>'abc2']);
+        $company = Company::with('users')->where(['id'=>1])->get();
+//        dd($company->toArray());
+
+        $user = User::find(2);
+        $user->update(['company_id'=>2]);
+
+        $otherUser = User::with('company')->where(['id'=>1])->get();
+        dd($otherUser ->toArray());
+        $this->assertTrue(true);
     }
 }

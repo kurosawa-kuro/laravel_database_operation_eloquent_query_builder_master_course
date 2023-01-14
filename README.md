@@ -25,3 +25,8 @@ php artisan ide-helper:models
 ```
 php artisan make:model UserProfile -m
 ```
+
+```
+ php artisan migrate --env=testing
+```
+
